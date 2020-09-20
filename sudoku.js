@@ -1,44 +1,76 @@
-/*let cases = document.querySelectorAll('table.board > tbody > tr > td > table > tbody > tr > td');
+let cases = document.querySelectorAll('table.board > tbody > tr > td > table > tbody > tr > td');
+cases = orderSudoku(cases);
+let res = document.querySelectorAll('table.result > tbody > tr > td > table > tbody > tr > td');
+res = orderSudoku(res);
 
-
-function solve(){
-    let sudoku = [];
-
-    cases.forEach(el =>{
-        sudoku.push(el.textContent);
-    });
+function getRes(){
+    let sudoku = readSudoku();
+    console.log(sudoku);
     
-    console.log("case number : %d", sudoku.length);
+    let start = Date.now();
 
+    let solution = algoX(3, sudoku);
+    let res = solution.next();
+    console.log(res.value);
+
+    let time = Date.now() - start;
+    console.log("elapsed time = " + time + "ms");
+    writeSudoku(res.value);
+    
 }
-
 
 let button = document.getElementsByClassName('start')[0];
 
-button.addEventListener("click", solve, false);
-*/
+button.addEventListener("click", getRes, false);
 
-let grid = [
-    [0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]];
-let start = Date.now();
+/**
+ * functions 
+ */
 
-let solution = algoX(3, grid);
-let tempWait = solution.next();
-while(!tempWait.done){
-    console.log(tempWait.value);
-    tempWait = solution.next();
+function orderSudoku(sud){
+    let orderedSudoku = [];
+    for (let j = 0; j < 3; j++) {
+        for (let i = 0; i < 3; i++) {
+            for (let k = 0; k < 3; k++) {
+                for (let l = 0; l < 3; l++) {
+                    orderedSudoku.push(sud[l + (k * 9) + (i *3) + (j * 27)]);   
+                }
+            }
+        }
+        
+    }
+    return orderedSudoku;
 }
 
-let time = Date.now() - start;
-console.log("elapsed time = " + time + "ms");
+function writeSudoku(sol){
+    for (let i = 0; i < sol.length; i++) {
+        for (let j = 0; j < sol[i].length; j++) {
+            res[(i*sol.length)+j].textContent = sol[i][j];
+            
+        }
+    }
+}
+
+function readSudoku(){
+    let sudoku = [];
+    let row = [];
+    for (let i = 0; i < cases.length; i++) {
+        if(i != 0 && i % 9 == 0){
+            console.log("res : " + i)
+            sudoku.push(row);
+            row = [];
+        }
+        if(cases[i].textContent == ""){
+            row.push(0);
+        }
+        else{
+            row.push(parseInt(cases[i].textContent));
+        }
+    }
+    sudoku.push(row);
+
+    return sudoku;
+}
 
 function minX(X) {
     let minLength;
