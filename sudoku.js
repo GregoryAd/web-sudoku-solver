@@ -56,7 +56,6 @@ function readSudoku(){
     let row = [];
     for (let i = 0; i < cases.length; i++) {
         if(i != 0 && i % 9 == 0){
-            console.log("res : " + i)
             sudoku.push(row);
             row = [];
         }

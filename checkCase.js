@@ -35,15 +35,55 @@ for (let i = 0; i < cases.length; i++) {
         if(event.keyCode == 8){
             cases[i].textContent = "";
         }
-        if((event.currentTarget.textContent.length == 1  || isNaN(event.key))){
+        if((event.currentTarget.textContent.length == 1  || isNaN(event.key)) || !validPlace(event.key, i)){
             event.preventDefault();
             return;
         }
       });
 
       cases[i].addEventListener("keyup", event => {
-        if(!isNaN(event.key)){
+        if(!isNaN(event.key) && (i + 1) < cases.length && event.currentTarget.textContent.length == 1){
             cases[i+1].focus();
         }
       });
+}
+
+function validPlace(value, i){
+
+    //row
+
+    for (let j = 0; j < 9; j++) {
+        if(i != j){
+            if(value == cases[j + (Math.floor(i / 9)*9)].textContent){
+                return false;
+            }
+        }
+    }
+
+    //col
+
+    for (let j = 0; j < 9; j++) {
+        if(i != j){
+            if(value == cases[(i % 9) + (9 * j)].textContent){
+                return false;
+            }
+        }
+    }
+
+    //box
+    
+    let box = Math.floor((i % 9) / 3) + (Math.floor(i/27) * 3);
+    
+    for (let j = 0; j < 3; j++) {
+        for (let k = 0; k < 3; k++) {
+            if(i != j){
+                if(value == cases[(Math.floor(i / 27) * 27) + (3 * (box % 3)) + (j * 9) + k].textContent){
+                    return false;
+                }
+            }
+        }
+        
+    }
+    
+    return true;
 }
