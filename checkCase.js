@@ -3,7 +3,6 @@ cases[0].focus();
 
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
-        alert(event.code);
         if(event.keyCode >= 37 && event.keyCode <= 40){
             if (event.keyCode == 37) {
                 if(i - 1 >= 0){
@@ -40,6 +39,7 @@ for (let i = 0; i < cases.length; i++) {
       });
 
       cases[i].addEventListener("keyup", event => {
+        alert(event.key);
         if(!isNaN(event.key) && (i + 1) < cases.length && event.currentTarget.textContent.length == 1){
             cases[i+1].focus();
         }
