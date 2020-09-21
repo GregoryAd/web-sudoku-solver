@@ -135,9 +135,12 @@ function select(X, Y, r){
                         let j2 = j[0] + "," + j[1][0] + "," + j[1][1];
                         let k2 = k[0] + "," + k[1][0] + "," + k[1][1];
                         if( k2 != j2){
-                            if(X[k]){
-                                X[k].delete(i);
+                            X[k].delete(i);
+                            if(X[k].size == 0){
+                                console.log(X[k]);
+                                delete X[k];
                             }
+                            
                         }
                     }
                 }
@@ -176,7 +179,9 @@ function deselect(X, Y, r, cols){
 }
 
 function* solve(X, Y, solution){
+    console.log(Object.entries(X).length);
     if(Object.entries(X).length == 0){
+        console.log("qdsfqdsqdsfqdfsqsfddqfs");
         yield solution;
     }
     else{
@@ -187,6 +192,7 @@ function* solve(X, Y, solution){
                 if(compare != r){
                     compare = r;
                     solution.push(r);
+                    console.log(r);
                     let cols = select(X, Y, r);
                     yield* solve(X, Y, solution);
                     deselect(X, Y, r, cols);
