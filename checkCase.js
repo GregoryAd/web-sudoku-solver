@@ -39,7 +39,8 @@ for (let i = 0; i < cases.length; i++) {
       });
 
       cases[i].addEventListener("keyup", event => {
-        alert(event.key);
+        alert(event.code);
+        alert(event.which);
         if(!isNaN(event.key) && (i + 1) < cases.length && event.currentTarget.textContent.length == 1){
             cases[i+1].focus();
         }
