@@ -3,7 +3,7 @@ cases[0].focus();
 
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
-        alert(event.key);
+        alert(event.code);
         if(event.keyCode >= 37 && event.keyCode <= 40){
             if (event.keyCode == 37) {
                 if(i - 1 >= 0){
