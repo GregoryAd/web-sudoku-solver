@@ -1,6 +1,5 @@
 cases[0].focus();
 
-
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
         if(event.keyCode >= 37 && event.keyCode <= 40){
@@ -31,17 +30,27 @@ for (let i = 0; i < cases.length; i++) {
         }
         if(event.keyCode == 8){
             cases[i].textContent = "";
-        }
-        if((event.currentTarget.textContent.length == 1  || isNaN(event.key)) || !validPlace(event.key, i)){
-            event.preventDefault();
             return;
+        }
+        if(cases[i].textContent.length == 1){
+            
+            event.preventDefault();
         }
       });
 
       cases[i].addEventListener("keyup", event => {
-        alert(event.code);
-        alert(event.which);
-        if(!isNaN(event.key) && (i + 1) < cases.length && event.currentTarget.textContent.length == 1){
+        if(isNaN(cases[i].textContent) || !validPlace(cases[i].textContent, i)){
+            cases[i].textContent = "";
+        }
+
+        for(let k = 0; k < cases.length; k++) {
+            if(!validPlace(cases[k].textContent, k)) {
+                cases[k].textContent = "";
+            }
+            
+        }
+
+        if(!isNaN(cases[i].textContent) && (i + 1) < cases.length && cases[i].textContent.length == 1 && (event.keyCode < 37 || event.keyCode > 40)){
             cases[i+1].focus();
         }
       });
@@ -52,18 +61,23 @@ function validPlace(value, i){
     //row
 
     for (let j = 0; j < 9; j++) {
-        if(i != j){
-            if(value == cases[j + (Math.floor(i / 9)*9)].textContent){
+        let pos = j + (Math.floor(i / 9)*9);
+        if(i != pos){
+            if(value == cases[pos].textContent){
                 return false;
             }
         }
     }
 
     //col
-
+    
     for (let j = 0; j < 9; j++) {
-        if(i != j){
-            if(value == cases[(i % 9) + (9 * j)].textContent){
+        let pos = (i % 9) + (9 * j);
+        
+        if(i != pos){
+            console.log(value + " : " +cases[pos].textContent);
+            if(value == cases[pos].textContent){
+                console.log("col");
                 return false;
             }
         }
@@ -75,8 +89,9 @@ function validPlace(value, i){
     
     for (let j = 0; j < 3; j++) {
         for (let k = 0; k < 3; k++) {
-            if(i != j){
-                if(value == cases[(Math.floor(i / 27) * 27) + (3 * (box % 3)) + (j * 9) + k].textContent){
+            let pos = (Math.floor(i / 27) * 27) + (3 * (box % 3)) + (j * 9) + k;
+            if(i != pos){
+                if(value == cases[pos].textContent){
                     return false;
                 }
             }
