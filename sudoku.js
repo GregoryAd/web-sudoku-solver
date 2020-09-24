@@ -33,7 +33,7 @@ function orderSudoku(sud){
         for (let i = 0; i < 3; i++) {
             for (let k = 0; k < 3; k++) {
                 for (let l = 0; l < 3; l++) {
-                    orderedSudoku.push(sud[l + (k * 9) + (i *3) + (j * 27)]);   
+                    orderedSudoku.push(sud[l + (k * 9) + (i * 3) + (j * 27)]);   
                 }
             }
         }
