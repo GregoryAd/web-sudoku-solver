@@ -85,7 +85,7 @@ function validPlace(value, i){
 
     //box
     
-    let box = Math.floor((i % 9) / 3) + (Math.floor(i/27) * 3);
+    let box = Math.floor((i % 9) / 3) + (Math.floor(i / 27) * 3);
     
     for (let j = 0; j < 3; j++) {
         for (let k = 0; k < 3; k++) {

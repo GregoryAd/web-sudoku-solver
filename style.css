@@ -14,19 +14,54 @@ td {
 table{
     border: 2px solid black;
     width: 10rem;
+    background-color: gray;
 }
 
 img{
     margin-left: 5rem;
     margin-right: 5rem;
+    cursor: pointer;
 }
 
-body{
+div{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
+
+body {
+    background-color:#494949;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 
 .start:hover{
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
+}
+
+h1{
+    font-size: 5rem;
+    text-align: center;
+    font-family: 'Bangers', cursive;
+}
+
+header{
+    padding-top: 0.25rem;
+    background-color: gray;
+}
+
+[contenteditable="true"]:focus{
+    border:none;
+    outline:none;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px #222;
+}
+
+footer {
+    text-align: right;
+    margin-top: 6.5rem;
+    margin-right: 1rem;
 }
