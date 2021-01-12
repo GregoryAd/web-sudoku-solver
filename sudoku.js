@@ -2,30 +2,49 @@ let cases = document.querySelectorAll('table.board > tbody > tr > td > table > t
 cases = orderSudoku(cases);
 let res = document.querySelectorAll('table.result > tbody > tr > td > table > tbody > tr > td');
 res = orderSudoku(res);
-
-function getRes(){
-    let sudoku = readSudoku();
-    console.log(sudoku);
-    
-    let start = Date.now();
-
-    let solution = algoX(3, sudoku);
-    let res = solution.next();
-    console.log(res.value);
-
-    let time = Date.now() - start;
-    console.log("elapsed time = " + time + "ms");
-    writeSudoku(res.value);
-    
-}
+let solution;
 
 let button = document.getElementsByClassName('start')[0];
-
 button.addEventListener("click", getRes, false);
+button = document.getElementsByClassName('reset')[0];
+button.addEventListener("click", resetAll, false);
+button = document.getElementsByClassName('next')[0];
+button.addEventListener("click", nextRes, false);
 
 /**
  * functions 
  */
+
+function getRes(){
+    let sudoku = readSudoku();
+    solution = algoX(3, sudoku);
+    let resolvedSudoku = solution.next();
+    writeSudoku(resolvedSudoku.value);
+}
+
+function nextRes(){
+    let resolvedSudoku = solution.next();
+    if(!resolvedSudoku.done){
+        writeSudoku(resolvedSudoku.value);
+    }
+    else{
+        button.textContent = "No more solutions";
+    }
+}
+
+function resetRes(){
+    res.forEach(element => {
+        element.textContent = "";
+    });
+    button.textContent = "Next solutions";
+}
+
+function resetAll(){
+    resetRes();
+    cases.forEach(element => {
+        element.textContent = "";
+    });
+}
 
 function orderSudoku(sud){
     let orderedSudoku = [];
@@ -127,27 +146,19 @@ function exact_cover(X, Y){
 
 function select(X, Y, r){
     cols = [];
-    if(Y[r]){
-        for (const [other, j] of Object.entries(Y[r])) {
-            if(X[j]){
-                for (const i of X[j]) {
-                    for (const k of Y[i]) { 
-                        let j2 = j[0] + "," + j[1][0] + "," + j[1][1];
-                        let k2 = k[0] + "," + k[1][0] + "," + k[1][1];
-                        if( k2 != j2){
-                            X[k].delete(i);
-                            if(X[k].size == 0){
-                                delete X[k];
-                            }
-                            
-                        }
-                    }
+    for (const [other, j] of Object.entries(Y[r])) {
+        for (const i of X[j]) {
+            for (const k of Y[i]) { 
+                let j2 = j[0] + "," + j[1][0] + "," + j[1][1];
+                let k2 = k[0] + "," + k[1][0] + "," + k[1][1];
+                if( k2 != j2){
+                    X[k].delete(i);
                 }
-                let tempValue = X[j];
-                delete X[j];
-                cols.push(tempValue);
             }
         }
+        let tempValue = X[j];
+        delete X[j];
+        cols.push(tempValue);
     }
     return cols;
 }
@@ -164,7 +175,7 @@ function deselect(X, Y, r, cols){
     let yInv = inverse(Y[r]);
     for (const [other, j] of Object.entries(yInv)) {
         X[j] = cols.pop();
-        for (const i of X[j]) {
+        for (const i of X[j]){
             for (const k of Y[i]) {
                 let j2 = j[0] + "," + j[1][0] + "," + j[1][1];
                 let k2 = k[0] + "," + k[1][0] + "," + k[1][1];
@@ -183,18 +194,12 @@ function* solve(X, Y, solution){
     }
     else{
         let c = minX(X);
-        if(X[c]){
-            let compare;
-            for (const r of X[c]) {
-                if(compare != r){
-                    compare = r;
-                    solution.push(r);
-                    let cols = select(X, Y, r);
-                    yield* solve(X, Y, solution);
-                    deselect(X, Y, r, cols);
-                    solution.pop();
-                }
-            }
+        for (const r of new Set(X[c])) {
+            solution.push(r);
+            let cols = select(X, Y, r);
+            yield* solve(X, Y, solution);
+            deselect(X, Y, r, cols);
+            solution.pop();
         }
     }
 }

@@ -14,7 +14,7 @@ td {
 table{
     border: 2px solid black;
     width: 10rem;
-    background-color: gray;
+    background-color:#707070;
 }
 
 img{
@@ -27,6 +27,31 @@ div{
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+div.grid{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: rgb(27, 27, 27);
+    color: whitesmoke;
+    border-radius: 1rem 1rem 1rem 1rem;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover{
+    box-shadow: 5px 5px 10px black;
+}
+
+button:focus{
+    outline:none;
 }
 
 body {
@@ -43,6 +68,9 @@ body {
 }
 
 h1{
+    color: white;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black;
     font-size: 5rem;
     text-align: center;
     font-family: 'Bangers', cursive;
@@ -50,7 +78,7 @@ h1{
 
 header{
     padding-top: 0.25rem;
-    background-color: gray;
+    background-color:#707070;
 }
 
 [contenteditable="true"]:focus{
@@ -60,8 +88,17 @@ header{
     box-shadow: 5px 5px 5px #222;
 }
 
+[contenteditable="true"]{
+    cursor: text;
+}
+
 footer {
     text-align: right;
-    margin-top: 6.5rem;
+    margin-top: 6.0rem;
     margin-right: 1rem;
+    font-size: 1.25rem;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black;
 }

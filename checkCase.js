@@ -2,6 +2,9 @@ cases[0].focus();
 
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
+        
+        resetRes();
+
         if(event.keyCode >= 37 && event.keyCode <= 40){
             if (event.keyCode == 37) {
                 if(i - 1 >= 0){
@@ -39,7 +42,7 @@ for (let i = 0; i < cases.length; i++) {
       });
 
       cases[i].addEventListener("keyup", event => {
-        if(isNaN(cases[i].textContent) || !validPlace(cases[i].textContent, i)){
+        if(isNaN(cases[i].textContent) || !validPlace(cases[i].textContent, i) || cases[i].textContent == 0){
             cases[i].textContent = "";
         }
 
@@ -75,9 +78,7 @@ function validPlace(value, i){
         let pos = (i % 9) + (9 * j);
         
         if(i != pos){
-            console.log(value + " : " +cases[pos].textContent);
             if(value == cases[pos].textContent){
-                console.log("col");
                 return false;
             }
         }
