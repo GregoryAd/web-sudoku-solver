@@ -1,3 +1,8 @@
+header{
+    padding-top: 0.25rem;
+    background-color:#707070;
+}
+
 table, body, tbody, tr, td {
     border-collapse: collapse;
 }
@@ -15,12 +20,6 @@ table{
     border: 2px solid black;
     width: 10rem;
     background-color:#707070;
-}
-
-img{
-    margin-left: 5rem;
-    margin-right: 5rem;
-    cursor: pointer;
 }
 
 div{
@@ -61,10 +60,9 @@ body {
     padding: 0;
 }
 
-
-.start:hover{
-    -webkit-filter: drop-shadow(5px 5px 5px #222);
-    filter: drop-shadow(5px 5px 5px #222);
+img{
+    margin-left: 5rem;
+    margin-right: 5rem;
 }
 
 h1{
@@ -74,11 +72,6 @@ h1{
     font-size: 5rem;
     text-align: center;
     font-family: 'Bangers', cursive;
-}
-
-header{
-    padding-top: 0.25rem;
-    background-color:#707070;
 }
 
 [contenteditable="true"]:focus{
@@ -102,3 +95,26 @@ footer {
     -webkit-text-stroke-width: 0.25px;
     -webkit-text-stroke-color: black;
 }
+
+@media all and (max-width:1024px){
+
+	div{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    img{
+        margin-left: auto;
+        margin-right: auto;
+        transform: rotate(90deg);
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        width: 75%;
+    }
+
+    div.grid{
+        margin-left: auto;
+        margin-right: auto;
+    }
+ }

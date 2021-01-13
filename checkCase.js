@@ -2,8 +2,6 @@ cases[0].focus();
 
 for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
-        
-        resetRes();
 
         if(event.keyCode >= 37 && event.keyCode <= 40){
             if (event.keyCode == 37) {
@@ -49,6 +47,10 @@ for (let i = 0; i < cases.length; i++) {
         for(let k = 0; k < cases.length; k++) {
             if(!validPlace(cases[k].textContent, k)) {
                 cases[k].textContent = "";
+            }
+            else{
+                if(!(event.keyCode >= 37 && event.keyCode <= 40))
+                getRes();
             }
             
         }

@@ -4,8 +4,6 @@ let res = document.querySelectorAll('table.result > tbody > tr > td > table > tb
 res = orderSudoku(res);
 let solution;
 
-let button = document.getElementsByClassName('start')[0];
-button.addEventListener("click", getRes, false);
 button = document.getElementsByClassName('reset')[0];
 button.addEventListener("click", resetAll, false);
 button = document.getElementsByClassName('next')[0];
