@@ -1,6 +1,6 @@
-let cases = document.querySelectorAll('table.board > tbody > tr > td > table > tbody > tr > td');
+let cases = document.getElementsByClassName("caseInput");
 cases = orderSudoku(cases);
-let res = document.querySelectorAll('table.result > tbody > tr > td > table > tbody > tr > td');
+let res = document.getElementsByClassName("result")[0].querySelectorAll(".case");
 res = orderSudoku(res);
 let solution;
 
@@ -40,7 +40,7 @@ function resetRes(){
 function resetAll(){
     resetRes();
     cases.forEach(element => {
-        element.textContent = "";
+        element.value = "";
     });
 }
 
@@ -63,7 +63,6 @@ function writeSudoku(sol){
     for (let i = 0; i < sol.length; i++) {
         for (let j = 0; j < sol[i].length; j++) {
             res[(i*sol.length)+j].textContent = sol[i][j];
-            
         }
     }
 }
@@ -76,11 +75,11 @@ function readSudoku(){
             sudoku.push(row);
             row = [];
         }
-        if(cases[i].textContent == ""){
+        if(cases[i].value == ""){
             row.push(0);
         }
         else{
-            row.push(parseInt(cases[i].textContent));
+            row.push(parseInt(cases[i].value));
         }
     }
     sudoku.push(row);

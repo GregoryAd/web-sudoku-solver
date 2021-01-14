@@ -9,11 +9,19 @@ table, body, tbody, tr, td {
 
 td {
     border: 1px solid black;
-    width: 1rem;
+    width: 0.25rem;
     height: 3.15rem;
     padding: 0;
     margin: 0;
     text-align: center;
+}
+
+input.caseInput{
+    background-color :inherit;
+    height: 100%;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
 }
 
 table{
@@ -30,7 +38,7 @@ div{
 
 div.grid{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
 }
 
 button{
