@@ -84,13 +84,6 @@ h1{
     font-family: 'Bangers', cursive;
 }
 
-input.caseInput:focus{
-    border:none;
-    outline:none;
-    background-color: whitesmoke;
-    box-shadow: 5px 5px 5px #222;
-}
-
 input.caseInput{
     text-align: center;
     font-family: inherit;
@@ -98,6 +91,23 @@ input.caseInput{
     font-size: inherit;
     cursor: text;
 }
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.caseInput:focus{
+    border:none;
+    outline:none;
+    background-color: whitesmoke;
+    box-shadow: 5px 5px 5px #222;
+}
+
 
 footer {
     text-align: right;

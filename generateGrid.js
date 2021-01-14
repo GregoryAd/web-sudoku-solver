@@ -73,8 +73,7 @@ function addInput(table){
     
     for(let element of cases){
         let input = document.createElement("input");
-        input.setAttribute("type", "tel");
-        input.setAttribute("pattern", "[1-9]");
+        input.setAttribute("type", "number");
         input.setAttribute("class", "caseInput");
         element.appendChild(input);
     }

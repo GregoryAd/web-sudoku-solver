@@ -4,6 +4,7 @@ for (let i = 0; i < cases.length; i++) {
     cases[i].addEventListener("keydown", event => {
 
         if(event.keyCode >= 37 && event.keyCode <= 40){
+            event.preventDefault();
             if (event.keyCode == 37) {
                 if(i - 1 >= 0){
                     cases[i - 1].focus();
@@ -46,7 +47,7 @@ for (let i = 0; i < cases.length; i++) {
 }
 
 for (let i = 0; i < cases.length; i++) {
-    cases[i].addEventListener("input", () =>{
+    cases[i].addEventListener("input", event =>{
         console.log("test");
         if((i + 1) < cases.length && cases[i].value.length == 1){
             getRes();
