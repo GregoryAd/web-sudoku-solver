@@ -76,6 +76,7 @@ function addInput(table){
         input.setAttribute("type", "number");
         input.setAttribute("min", "1");
         input.setAttribute("max", "9");
+        input.setAttribute("step", "1");
         input.setAttribute("inputmode", "numeric");
         input.setAttribute("type", "number");
         input.setAttribute("class", "caseInput");

@@ -30,27 +30,31 @@ for (let i = 0; i < cases.length; i++) {
                 return;
             }
         }
-        if(event.keyCode == 8){
-            cases[i].value = "";
-            return;
-        }
-        if(isNaN(event.key) || !validPlace(event.key, i) || event.key == 0){
-            event.preventDefault();
-            return;
-        }
-        else{
-            if(cases[i].value.length >= 1){
-                cases[i].value = "";
-            }
-        }
     });
 }
 
 for (let i = 0; i < cases.length; i++) {
-    cases[i].addEventListener("input", () =>{
-        console.log("test");
-        if((i + 1) < cases.length && cases[i].value.length == 1){
-            getRes();
+    cases[i].addEventListener("input", event =>{
+        if(!validPlace(event.data, i)){
+            cases[i].value = null;
+            return;
+        }
+
+        if(event.data == null){
+            cases[i].value = null;
+        }
+
+        if(!cases[i].checkValidity()){
+            cases[i].value = null;
+            if(!isNaN(event.data)){
+                cases[i].value = event.data;
+            }
+            else{
+                return;
+            }
+        }
+        getRes();
+        if((i + 1) < cases.length && event.data != null){
             cases[i+1].focus();
         }
     });
