@@ -1,22 +1,21 @@
 header{
-    padding-top: 0.25rem;
-    background-color:#707070;
+    background-color:#080808;
 }
 
 body{
-    background-color:#494949;
+    background-color:#323232;
     min-height: 100%;
     margin: 0;
     padding: 0;
 }
 
 h1{
-    color: white;
-    -webkit-text-stroke-width: 0.25px;
-    -webkit-text-stroke-color: black;
+    color: #f9f9f9;
     font-size: 5rem;
     text-align: center;
-    font-family: 'Bangers', cursive;
+    font-family: 'Roboto';
+    margin-top: 0;
+    padding-top: 0;
 }
 
 div{
@@ -37,7 +36,7 @@ table, body, tbody, tr, td{
 table{
     border: 2px solid black;
     width: 10rem;
-    background-color:#707070;
+    background-color:#bdbdbd;
 }
 
 td{
@@ -85,17 +84,18 @@ input.caseInput:focus{
 button{
     text-align: center;
     font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
     margin-top: 1rem;
     padding: 0.75rem;
-    background-color: rgb(27, 27, 27);
-    color: whitesmoke;
+    background-color: #b3b3b3;
     border-radius: 1rem 1rem 1rem 1rem;
     cursor: pointer;
     border: none;
 }
 
 button:hover{
-    background-color: rgb(37, 37, 37);
+    background-color: #a0a0a0;
 }
 
 button:focus{
@@ -109,14 +109,21 @@ img{
 
 footer{
     text-align: right;
-    margin-top: 6.0rem;
+    margin-top: 9rem;
     margin-right: 1rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     font-size: 1.25rem;
     font-style: italic;
     font-family: 'Roboto', sans-serif;
     color: white;
     -webkit-text-stroke-width: 0.25px;
     -webkit-text-stroke-color: black;
+}
+
+p{
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 @media all and (max-width: 1800px){
