@@ -119,7 +119,7 @@ footer{
     -webkit-text-stroke-color: black;
 }
 
-@media all and (max-width:1024px){
+@media all and (max-width: 1800px){
 
 	div{
         display: flex;
