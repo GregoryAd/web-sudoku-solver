@@ -74,6 +74,10 @@ function addInput(table){
     for(let element of cases){
         let input = document.createElement("input");
         input.setAttribute("type", "number");
+        input.setAttribute("min", "1");
+        input.setAttribute("max", "9");
+        input.setAttribute("step", "1");
+        input.setAttribute("type", "number");
         input.setAttribute("class", "caseInput");
         element.appendChild(input);
     }
