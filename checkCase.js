@@ -46,8 +46,9 @@ for (let i = 0; i < cases.length; i++) {
 }
 
 for (let i = 0; i < cases.length; i++) {
-    cases[i].addEventListener("keyup", event =>{
-        if(!isNaN(event.key) && (i + 1) < cases.length && cases[i].value.length == 1 && (event.keyCode < 37 || event.keyCode > 40)){
+    cases[i].addEventListener("input", () =>{
+        console.log("test");
+        if((i + 1) < cases.length && cases[i].value.length == 1){
             getRes();
             cases[i+1].focus();
         }
