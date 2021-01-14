@@ -3,11 +3,44 @@ header{
     background-color:#707070;
 }
 
-table, body, tbody, tr, td {
+body{
+    background-color:#494949;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    color: white;
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black;
+    font-size: 5rem;
+    text-align: center;
+    font-family: 'Bangers', cursive;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+div.grid{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+table, body, tbody, tr, td{
     border-collapse: collapse;
 }
 
-td {
+table{
+    border: 2px solid black;
+    width: 10rem;
+    background-color:#707070;
+}
+
+td{
     border: 1px solid black;
     width: 0.25rem;
     height: 3.15rem;
@@ -26,21 +59,27 @@ input.caseInput{
     box-sizing: border-box;
 }
 
-table{
-    border: 2px solid black;
-    width: 10rem;
-    background-color:#707070;
+input.caseInput{
+    text-align: center;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    cursor: text;
 }
 
-div{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+input[type=number] {
+    -moz-appearance: textfield;
 }
 
-div.grid{
-    display: flex;
-    flex-direction: column-reverse;
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input.caseInput:focus{
+    border:none;
+    outline:none;
+    background-color: whitesmoke;
 }
 
 button{
@@ -63,53 +102,12 @@ button:focus{
     outline:none;
 }
 
-body {
-    background-color:#494949;
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
 img{
     margin-left: 5rem;
     margin-right: 5rem;
 }
 
-h1{
-    color: white;
-    -webkit-text-stroke-width: 0.25px;
-    -webkit-text-stroke-color: black;
-    font-size: 5rem;
-    text-align: center;
-    font-family: 'Bangers', cursive;
-}
-
-input.caseInput{
-    text-align: center;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: inherit;
-    cursor: text;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
-}
-
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input.caseInput:focus{
-    border:none;
-    outline:none;
-    background-color: whitesmoke;
-    box-shadow: 5px 5px 5px #222;
-}
-
-
-footer {
+footer{
     text-align: right;
     margin-top: 6.0rem;
     margin-right: 1rem;
