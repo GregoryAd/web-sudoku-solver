@@ -16,17 +16,21 @@ button.addEventListener("click", nextRes, false);
 function getRes(){
     let sudoku = readSudoku();
     solution = algoX(3, sudoku);
-    let resolvedSudoku = solution.next();
-    writeSudoku(resolvedSudoku.value);
+    if(solution){
+        let resolvedSudoku = solution.next();
+        writeSudoku(resolvedSudoku.value);
+    }
 }
 
 function nextRes(){
-    let resolvedSudoku = solution.next();
-    if(!resolvedSudoku.done){
-        writeSudoku(resolvedSudoku.value);
-    }
-    else{
-        button.textContent = "No more solutions";
+    if(solution){
+        let resolvedSudoku = solution.next();
+        if(!resolvedSudoku.done){
+            writeSudoku(resolvedSudoku.value);
+        }
+        else{
+            button.textContent = "No more solutions";
+        }
     }
 }
 
@@ -35,6 +39,7 @@ function resetRes(){
         element.textContent = "";
     });
     button.textContent = "Next solutions";
+    solution = null;
 }
 
 function resetAll(){
