@@ -95,7 +95,7 @@ button{
 }
 
 button:hover{
-    box-shadow: 5px 5px 10px black;
+    background-color: rgb(37, 37, 37);
 }
 
 button:focus{
