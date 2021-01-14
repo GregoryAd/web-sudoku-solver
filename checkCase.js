@@ -47,7 +47,7 @@ for (let i = 0; i < cases.length; i++) {
 }
 
 for (let i = 0; i < cases.length; i++) {
-    cases[i].addEventListener("input", event =>{
+    cases[i].addEventListener("input", () =>{
         console.log("test");
         if((i + 1) < cases.length && cases[i].value.length == 1){
             getRes();
