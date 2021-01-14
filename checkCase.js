@@ -43,10 +43,9 @@ for (let i = 0; i < cases.length; i++) {
         if(event.data == null){
             cases[i].value = null;
         }
-
         if(!cases[i].checkValidity()){
             cases[i].value = null;
-            if(!isNaN(event.data)){
+            if(!isNaN(event.data) && event.data != 0){
                 cases[i].value = event.data;
             }
             else{
