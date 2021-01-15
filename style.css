@@ -160,6 +160,10 @@ p{
         height: 9.25vw;
     }
 
+    button{
+        height: 10rem;
+    }
+
     footer{
         margin-top: 2rem;
     }
