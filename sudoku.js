@@ -65,10 +65,15 @@ function orderSudoku(sud){
 }
 
 function writeSudoku(sol){
-    for (let i = 0; i < sol.length; i++) {
-        for (let j = 0; j < sol[i].length; j++) {
-            res[(i*sol.length)+j].textContent = sol[i][j];
+    if(sol){
+        for (let i = 0; i < sol.length; i++) {
+            for (let j = 0; j < sol[i].length; j++) {
+                res[(i*sol.length)+j].textContent = sol[i][j];
+            }
         }
+    }
+    else{
+        resetRes();
     }
 }
 
